@@ -13,7 +13,9 @@
 }
 
 #div_content {
-    background-image: url(../images/background.png);
+    /* background-image: url(../images/background.png); */
+    color: black;
+    background: white;
     background-size: 100% 100%;
     position: absolute;
     width: 100%;
@@ -25,14 +27,16 @@
     color: black;
     background: white;
     /* background-image: url(../images/top.png); */
+    /* background-size: 100% 100%; */
     font-size: 24px;
-    background-size: 100% 100%;
     padding: 1%;
     padding-top: 2%;
 }
 
 #Middle {
-    background-image: url(../images/center.png);
+    /* background-image: url(../images/center.png); */
+    color: black;
+    background: white;
     background-size: 100% 100%;
     width: 60%;
     background-repeat: no-repeat;
@@ -45,8 +49,8 @@
     margin-left: 5%;
     width: 90%;
     font-size: 45px;
-    color: #ffffff;
-    background-image: url(../images/bottom.png);
+    color: black;
+    background-image: url(../images/help.png);
     background-size: 100% 100%;
     margin-top: 4%;
     padding: 5%;
@@ -55,7 +59,7 @@
 #Foot {
     height: 6.5%;
     width: 100%;
-    color: #ffffff;
+    color: black;
     padding: 1%;
     bottom: 5px;
     position: absolute;
@@ -68,7 +72,7 @@
 #showTitle {
     height: 15%;
     font-size: 45px;
-    color: #ffffff;
+    color: black;
     padding-top: 2em;
 }
 
