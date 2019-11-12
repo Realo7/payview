@@ -1,0 +1,124 @@
+﻿<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>自助缴费终端</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1,maximum-scale=1,user-scalable=no">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black">
+    <link rel="stylesheet" href="./css/mui.min.css">
+    <link rel="stylesheet" type="text/css" href="MyCss/pay_1280.css" media="screen and (max-width:1280px)" />
+    <link rel="stylesheet" type="text/css" href="MyCss/pay_1366.css" media="screen and (min-width:1281px)" />
+    <script src="./js/mui.js"></script>
+    <script src="Myjs/common.js"></script>
+    <script src="Myjs/jquery-3.2.1.min.js"></script>
+    <script src="Myjs/jquery-qrcode-0.14.0.js"></script>
+    <script src="Myjs/pay.js?v=15"></script>
+</head>
+<body>
+    <div id="div_content" class="mui-content">
+        <div id="Top" class="mui-row">
+            <div id="ShowStatus" class="mui-col-xs-3 mui-text-center">正常服务</div>
+            <div class="mui-col-xs-5">
+            </div>
+            <div id="Date" class="mui-col-xs-4 mui-text-right lbl"></div>
+        </div>
+        <div class="mui-row content_middle">
+            <div class="mui-row" style="height: 100%">
+                <img style="display: none" src="images/QR.png" id="qrcode-logo" />
+                <div id="qrcode" class="mui-col-xs-6 left mui-text-center right left1">
+                    <div class="mui-row">
+                        <div class="mui-col-xs-1"></div>
+                        <div class="mui-col-xs-9 right_head" style="padding: 5%; margin-top: -12%;">
+                            扫码支付
+                        </div>
+                        <div class="mui-col-xs-2"></div>
+                    </div>
+
+                </div>
+
+                <div id="cash" class="mui-col-xs-6 lblfont right">
+                    <div class="mui-row">
+                        <div class="mui-col-xs-1"></div>
+                        <div class="mui-col-xs-9 right_head">
+                            现金支付
+                        </div>
+                        <div id="CountDown" class="mui-col-xs-2">0s</div>
+                    </div>
+
+                    <div id="div_cash" class="mui-row">
+                        <img id="img_cash" src="./images/cash.png" />
+                    </div>
+                    <div class="mui-row msg">
+                        <div class="mui-col-sm-1"></div>
+                        <div class="mui-col-xs-4 mui-text-right lbl">应付</div>
+                        <div class="mui-col-sm-1">:</div>
+                        <div id="shouldpay" class="mui-col-xs-4 yuanjiao">￥0.00</div>
+                    </div>
+                    <div class="mui-row msg">
+                        <div class="mui-col-sm-1"></div>
+                        <div class="mui-col-xs-4 mui-text-right lbl">已付</div>
+                        <div class="mui-col-sm-1">:</div>
+                        <div id="paymon" class="mui-col-xs-4 yuanjiao">￥0.00</div>
+                    </div>
+                    <div class="mui-row msg">
+                        <div class="mui-col-sm-1"></div>
+                        <div class="mui-col-xs-4 mui-text-right lbl">找零</div>
+                        <div class="mui-col-sm-1">:</div>
+                        <div id="oddchange" class="mui-col-xs-4 yuanjiao">￥0.00</div>
+                    </div>
+                </div>
+            </div>
+            <div class="mui-row lblfont_bottom bottom">
+                <div id="payInfo" class="mui-row">
+                    <div class="mui-col-xs-7">
+                        <div class="mui-row">
+                            <div class="mui-col-xs-5" style="padding: 1%;">车牌号</div>
+                            <div id="lblplate" class="mui-col-xs-5 mui-text-center bottom_txt">
+                            </div>
+                            <div class="mui-col-xs-2"></div>
+                        </div>
+                        <div class="mui-row" style="margin-top: 3%">
+                            <div class="mui-col-xs-5" style="padding: 1%;">停留时间</div>
+                            <div id="lblStayTm" class="mui-col-xs-5 mui-text-center bottom_txt">
+                            </div>
+                            <div class="mui-col-xs-2"></div>
+                        </div>
+                        <div class="mui-row" style="margin-top: 3%">
+                            <div class="mui-col-xs-3" style="padding-top: 1%;">入场时间</div>
+                            <div id="entryTm" class="mui-col-xs-4 bottom_txt" style="width:200px;"></div>
+                            <div id="entryTm2" class="mui-col-xs-3 bottom_txt" style="width:150px;"></div>
+                        </div>
+                    </div>
+                    <div class="mui-col-xs-5">
+                        <div class="mui-row">
+                            <div class="mui-col-xs-5" style="padding: 2%;">票号</div>
+                            <div id="lblticket" class="mui-col-xs-5 mui-text-center bottom_txt">
+                            </div>
+                            <div class="mui-col-xs-2"></div>
+                        </div>
+                        <div class="mui-row" style="margin-top: 3%">
+                            <div class="mui-col-xs-5" style="padding: 2%;">优惠金额</div>
+                            <div id="lblCouponMon" class="mui-col-xs-5 mui-text-center bottom_txt">
+                            </div>
+                            <div class="mui-col-xs-2"></div>
+                        </div>
+                        <div class="mui-row" style="margin-top: 3%">
+                            <div class="mui-col-xs-5" style="padding: 2%;">总应收金额</div>
+                            <div id="totalMon" class="mui-col-xs-7 mui-text-center bottom_txt" style="color: red;">￥0.00</div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div id="middlePopover" class="mui-popover">
+                <div class="mui-popover-arrow"></div>
+                <div class="mui-scroll-wrapper">
+                    <div class="mui-scroll"></div>
+                </div>
+            </div>
+
+        </div>
+    </div>
+</body>
+</html>

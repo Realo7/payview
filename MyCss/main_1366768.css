@@ -1,0 +1,83 @@
+﻿.mui-toast-container {
+    bottom: 50% !important; /*离布局底部的距离*/
+}
+
+.mui-toast-message {
+    background-color: white;
+    opacity: 1; /*toast中背景色的透明度*/
+    color: red; /*toast中字体颜色*/
+    width: 500px; /*toast宽度*/
+    padding: 50px 10px; /*toast中文字的位置*/
+    font-size: 30px;
+}
+
+#div_content {
+    background-image: url(../images/background.png);
+    background-size: 100% 100%;
+    position: absolute;
+    width: 100%;
+    height: 100%;
+}
+
+#Top {
+    height: 5%;
+    color: #ffffff;
+    background-image: url(../images/top.png);
+    background-size: 100% 100%;
+    padding-top: 0.5%;
+}
+
+#Middle {
+    background-image: url(../images/center.png);
+    background-size: 100% 100%;
+    width: 60%;
+    height: 50%;
+    background-repeat: no-repeat;
+    margin-top: 3em;
+    margin-left: 20%;
+    padding-top: 2em;
+}
+
+#Help { 
+    margin-left: 5%;
+    width: 90%;
+    font-size: 45px;
+    color: #ffffff;
+    background-image: url(../images/bottom.png);
+    background-size: 100% 100%;
+    margin-top: 1em;
+    padding: 4%;
+}
+
+#Foot {
+    height: 6.5%;
+    width: 100%;
+    color: #ffffff;
+    padding: 1%;
+    bottom: 5px;
+    position: absolute;
+}
+
+#Date {
+    padding-right: 5%;
+}
+
+#showTitle {
+    height: 15%;
+    font-size: 45px;
+    color: #ffffff;
+    padding-top: 1em;
+}
+
+#showImg {
+    padding-top: 3em;
+}
+
+#djImg {
+    padding: -10px;
+}
+
+#phoneImg {
+    height: 28px;
+    padding: 2px;
+}
