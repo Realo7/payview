@@ -32,6 +32,7 @@
     margin-left: 5%;
     margin-right: 5%;
     margin-top: 2%;
+    /* overflow: hidden; */
 }
 
 .left {
@@ -45,7 +46,9 @@
 }
 
 #div_content {
-    background-image: url(../images/background.png);
+    /* background-image: url(../images/background.png); */
+    color: black;
+    background: white;
     background-size: 100% 100%;
     position: absolute;
     width: 100%;
@@ -53,11 +56,13 @@
 }
 
 #Top {
-    height: 5%;
-    color: #ffffff;
-    background-image: url(../images/top.png);
+    height: 6%;
+    color: black;
+    background: white;
+    /* background-image: url(../images/top.png); */
     background-size: 100% 100%;
     padding-top: 0.5%;
+    font-size: 20px;
 }
 
 #CountDown {
@@ -72,14 +77,12 @@
     width: 90%;
     height: 30%;
     margin-top: 2%;
-    background-image: url(../images/bottom.png);
-    background-size: 100% 100%;
-    /*bottom: 3%;*/
+     background-size: 100% 100%; 
     position: absolute;
 }
 
 .bottom_txt {
-    background-image: url(../images/yuan3.png);
+    /* background-image: url(../images/yuan3.png); */
     background-size: 100% 100%;
     height: 40px;
     width: 200px;
@@ -91,7 +94,7 @@
 }
 
 .right {
-    background-image: url(../images/center.png);
+    /* background-image: url(../images/center.png); */
     background-size: 100% 100%;
     height: 100%;
 }
@@ -99,15 +102,16 @@
 .right_head {
     padding-top: 30px;
     text-align: center;
-    color: #ffffff;
+    color: black;
+    background: white;
     font-size: 35px;
 }
 
 .yuanjiao {
-    /*background-image: url(../images/yuan3.png);
+    /* background-image: url(../images/yuan3.png); */
     background-size: 100% 100%;
     height: 35px;
-    width:150px;*/
+    width:150px;
 }
 
 #img_cash {
@@ -123,7 +127,48 @@
 .msg {
     margin-top: 7%;
 }
-
+.span1{
+    line-height: 40px;
+    font-size:32px;
+    color: dodgerblue;
+}
 #payInfo {
     margin: 3%;
+}
+.QR01{
+    font-size: 24px;
+    text-align:center;
+}
+.commoninfo{
+    padding-left: 5%;
+    padding-top: 10%;
+    line-height: 50px;
+    font-size: 20px;
+}
+.middleleft{
+    padding-left: 10%;
+}
+#info{
+    height: 450px;
+    width: 100%;
+    color: black;
+    background-image: url(../images/infobac.png);
+    background-size: 100% 100%;
+    background-repeat: no-repeat;
+    padding-top: 15px;
+    margin-top: 30px;
+    
+}
+.constpay{
+    padding-left: 23%;
+    font-size: 26px;
+    font-weight:bolder;
+}
+.constpay02{
+    padding-left: 35%;
+}
+
+p{
+    padding-top: 3%;
+    font-size: 24px;
 }

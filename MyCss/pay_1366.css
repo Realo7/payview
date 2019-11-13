@@ -1,6 +1,7 @@
 ﻿.lblfont {
     font-size: 32px;
-    color: white;
+    color: black;
+    background: white;
 }
 
 .lbl {
@@ -9,15 +10,16 @@
 
 .lblfont_bottom {
     font-size: 1.9em;
-    color: white;
+    color: black;
+    background: white;
 }
 
 .mui-toast-container {
-    bottom: 50% !important; /*离布局底部的距离*/
+    bottom: 10% !important; /*离布局底部的距离*/
 }
 
 .mui-toast-message {
-    background-color: white;
+    background: white;
     opacity: 0.8; /*toast中背景色的透明度*/
     color: #080808; /*toast中字体颜色*/
     width: 300px; /*toast宽度*/
@@ -27,11 +29,11 @@
 
 .content_middle {
     width: 90%;
-    height: 60%;
+    height: 94%;
     /*border: 1px solid red;*/
     margin-left: 5%;
     margin-right: 5%;
-    margin-top: 2%;
+    overflow: hidden;
 }
 
 .left {
@@ -45,19 +47,32 @@
 }
 
 #div_content {
-    background-image: url(../images/background.png);
     background-size: 100% 100%;
     position: absolute;
     width: 100%;
     height: 100%;
+    background: white;
+    color: black;
 }
 
 #Top {
-    height: 5%;
-    color: #ffffff;
-    background-image: url(../images/top.png);
+    height: 6%;
+    color: black;
+    background: white;
     background-size: 100% 100%;
     padding-top: 0.5%;
+    font-size: 24px;
+}
+
+#info{
+    height: 700px;
+    width: 100%;
+    color: black;
+    background-image: url(../images/infobac.png);
+    background-size: 100% 100%;
+    background-repeat: no-repeat;
+    padding-top: 32px;
+    margin-top: 30px;
 }
 
 #CountDown {
@@ -70,16 +85,14 @@
 
 .bottom {
     width: 90%;
-    height: 25%;
+    height: 24%;
     margin-top: 2%;
-    background-image: url(../images/bottom.png);
-    background-size: 100% 100%;
-    /*bottom: 3%;*/
+    background-size: 100% 100%;  
     position: absolute;
 }
 
 .bottom_txt {
-    background-image: url(../images/yuan3.png);
+    /* background-image: url(../images/yuan3.png); */
     background-size: 100% 100%;
     height: 40px;
     width: 200px;
@@ -91,7 +104,7 @@
 }
 
 .right {
-    background-image: url(../images/center.png);
+    /* background-image: url(../images/center.png); */
     background-size: 100% 100%;
     height: 100%;
 }
@@ -99,15 +112,16 @@
 .right_head {
     padding-top: 30px;
     text-align: center;
-    color: #ffffff;
+    color: black;
+    background: white;
     font-size: 35px;
 }
 
 .yuanjiao {
-    /*background-image: url(../images/yuan3.png);
+    /* background-image: url(../images/yuan3.png); */
     background-size: 100% 100%;
     height: 35px;
-    width:150px;*/
+    width:150px;
 }
 
 #img_cash {
@@ -116,7 +130,7 @@
 }
 
 #div_cash {
-    margin-top: 8%;
+    margin-top: 20%;
     text-align: center;
 }
 
@@ -126,4 +140,36 @@
 
 #payInfo {
     margin: 1%;
+}
+
+.span1{
+    line-height: 40px;
+    font-size:32px;
+    color: dodgerblue;
+}
+.QR01{
+    font-size: 32px;
+    text-align:center;
+}
+.commoninfo{
+    padding-left: 10%;
+    padding-top: 10%;
+    line-height: 80px;
+    font-size: 23px;
+
+}
+.middleleft{
+    padding-left: 10%;
+}
+.constpay{
+    padding-left: 43%;
+    font-size: 28px;
+    font-weight:bolder;
+}
+.constpay02{
+    padding-left: 50%;
+}
+p{
+    padding-top: 3%;
+    font-size: 24px;
 }

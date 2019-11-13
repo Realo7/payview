@@ -39,21 +39,22 @@
     background: white;
     background-size: 100% 100%;
     width: 60%;
+    height: 50%;
     background-repeat: no-repeat;
     margin-top: 5%;
-    margin-left: 20%; 
-    height:50%;
+    margin-left: 20%;     
 }
 
 #Help {
     margin-left: 5%;
     width: 90%;
+    height: 8%;
     font-size: 45px;
     color: black;
-    background-image: url(../images/help.png);
+    background-color: white;
     background-size: 100% 100%;
-    margin-top: 4%;
-    padding: 5%;
+    margin-top: 3%;
+    padding: 4%;
 }
 
 #Foot {
