@@ -28,32 +28,57 @@
 
         <div class="mui-row content_middle">
             <div class="mui-col-xs-1"></div>
-            <div id="qrcode" class="mui-col-xs-5">
+            <div class="mui-col-xs-5">
                 <div class="mui-row middleleft">
                     <span class="span1">车牌号 : </span>
-                    <span class="span1"> 苏B 12345</span>
-
-                    <p>入场时间 : 2019-11-11 00.00.00</p>
-                    <p>停留时间 : 10小时</p>
+                    <div id="lblplate" class="span1"> </div>
+                    <br>
+                    <br>
+                    <span class="span1">票号 : </span>
+                    <div id="lblticket" class="span1"></div>
+                    <br>
+                    <br>
+                    <span class="inTM">入场时间:
+                        <div id="entryTm" class="constpay02"></div>
+                        <div id="entryTm2" class="constpay02"></div>
+                    </span>
+                    <br>
+                    <br>
+                    <span class="inTM">
+                        停留时间:<span id="lblStayTm" class="constpay02"></span>
+                    </span>
+                    <br>
+                    <br>
+                    <span class="inTM">
+                        优惠金额:<span id="lblStayTm" class="constpay02"></span>
+                    </span>
+                    <br>
+                    <br>
+                    <br>
+                    <span style="font-size: 26px;font-weight:bolder;">总应收金额</span>
+                    <span id="totalMon" class="constpay">￥20.00</span>
+                    <!-- <br><br><br><br><br> -->
                 </div>
+
                 <div id="info" class="mui-row">
-                    <div class="QR01">
+                    <div id="qrcode1" class="QR01">
                         <span>二维码支付</span>
                     </div>
+                    <div id="cash1" class="QR01" style="display:none">
+                        <span>现金支付</span>
+                        <div id="CountDown" style="display: inline;"></div>
+                    </div>
 
-                    <br>
-                    <div class="commoninfo">
+                    <div class=" commoninfo">
                         <span>应付金额</span>
-                        <span class="constpay02">￥20.00</span>
+                        <span id="shouldpay" class="constpay02">￥20.00</span>
                         <br>
                         <span>已付金额</span>
-                        <span class="constpay02">￥20.00</span>
+                        <span id="paymon" class="constpay02">￥20.00</span>
                         <br>
                         <span>找零金额</span>
-                        <span class="constpay02">￥0.00</span>
-                        <br>
-                        <span style="font-size: 26px;font-weight:bolder;">总应收金额</span>
-                        <span class="constpay">￥20.00</span>
+                        <span id="oddchange" class="constpay02">￥0.00</span>
+
                     </div>
 
 
@@ -62,15 +87,15 @@
             </div>
             <div class="mui-col-xs-1"></div>
             <!-- 中部右侧 -->
-            <div id="cash" class="mui-col-xs-4">
-                <div style="height: 60%;text-align: center;padding-top: 15%;">
-                    <img src="./images/085拷贝.png" alt="未显示二维码" width="90%">
+            <div class="mui-col-xs-4">
+                <div id="qrcode" style="height: 50%;text-align: center;">
+                    <img src="./images/085拷贝.png" alt="未显示二维码" width="70%" id="qrcode-logo">
                     <br>
                     <span style="font-size: 23px;line-height: 50px;">打开支付宝APP或微信进行扫码支付</span>
                 </div>
                 <br>
-                <div style="height: 40%;text-align: center;">
-                    <img src="./images/组9.png" width="100%">
+                <div id="cash" style="height: 50%;text-align: center;">
+                    <img src="./images/cashmechine.png" width="50%">
                 </div>
                 <div class="mui-col-xs-1"></div>
             </div>

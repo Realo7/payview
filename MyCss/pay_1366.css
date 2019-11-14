@@ -146,6 +146,7 @@
     line-height: 40px;
     font-size:32px;
     color: dodgerblue;
+    display: inline;
 }
 .QR01{
     font-size: 32px;
@@ -169,7 +170,8 @@
 .constpay02{
     padding-left: 50%;
 }
-p{
+.inTM{
     padding-top: 3%;
+    line-height: 40px;
     font-size: 24px;
 }

@@ -9,6 +9,10 @@
     <meta name="apple-mobile-web-app-status-bar-style" content="black">
     <link href="css/mui.min.css" rel="stylesheet" />
     <link rel="stylesheet" href="./MyCss/common.css">
+    <link rel="stylesheet" type="text/css" href="./css/virtualkeyboard.css">
+    <link rel="stylesheet" href="./MyCss/build.min.css">
+    <link rel="stylesheet" href="./MyCss/licensePlate.min.css">
+    <link rel="stylesheet" href="./MyCss/demo.min.css">
     <!--<link href="MyCss/main.css" rel="stylesheet" />-->
 
     <link rel="stylesheet" type="text/css" href="MyCss/main_1280.css" media="screen and (max-width:1280px)" />
@@ -31,9 +35,22 @@
         <div id="Middle" class="mui-content mui-text-center">
             <div id="showTitle" class="mui-row mui-text-center">
                 <div class="mui-col-xs-6">
-                    <p style="font-size: 40px;">请在扫描区域扫票</p>
-                    <button type="button" class="mui-btn mui-btn-primary mui-btn-outlined">扫票无效？输入车牌号</button>
-                    <input type="text" id="focus" />
+                    <p style="font-size: 40px;">请在扫描区域扫票或输入车牌号</p>
+                    <br>
+
+                    <div class="input_li">
+                        <!-- <label class="icon-user">车牌号：</label> -->
+                        <div class="car_input">
+                            <input class="car-plate" readonly="readonly" type="text" maxlength="1" placeholder="">
+                            <input class="car-plate" readonly="readonly" type="text" maxlength="1" placeholder="">
+                            <input class="car-plate" readonly="readonly" type="text" maxlength="1" placeholder="">
+                            <input class="car-plate" readonly="readonly" type="text" maxlength="1" placeholder="">
+                            <input class="car-plate" readonly="readonly" type="text" maxlength="1" placeholder="">
+                            <input class="car-plate" readonly="readonly" type="text" maxlength="1" placeholder="">
+                            <input class="car-plate" readonly="readonly" type="text" maxlength="1" placeholder="">
+                            <button class="btn">确定</button>
+                        </div>
+                    </div>
                     <div id="showImg" class="mui-row">
                         <img style="max-width: 100%;max-height: 100%" src="./images/Scan.png?v=1" />
                     </div>
@@ -48,7 +65,6 @@
                 <div class="mui-col-xs-4">
                     <img style="max-width: 100%;max-height: 100%;" src="./images/mechine.png" />
                 </div>
-
             </div>
 
         </div>
@@ -71,7 +87,67 @@
 
 </body>
 <script>
+    window.onload = function () {
+
+
+        /* 注册键盘1 */
+        var licensePlates1 = new licensePlate({
+            title: '示例1键盘',
+            className: 'demo_one',
+            value: [''],
+            step: 1,
+            onPress: (value, e) => {
+                console.log(value);
+                $('.input_one').val(value.join(''));
+            },
+        });
+
+        $('.input_one').click(function () {
+            licensePlates1.show();
+        });
+
+        $('#btn-remove').click(function () {
+            licensePlates1.remove();
+        });
+
+        /* 注册键盘2 */
+        var licensePlates = new licensePlate({
+            title: '车牌号键盘',
+            className: 'demo_two',
+            onPress: (value, e) => {
+                console.log(value);
+                var ndNow = $('.car-plate').removeClass('active').eq(licensePlates.step);
+                ndNow.val(value[licensePlates.step]);
+                if (e.target.className === 'license-delete' || licensePlates.step === licensePlates.level.length - 1) {
+                    ndNow.addClass('active');
+                } else {
+                    ndNow.next().addClass('active');
+                }
+            },
+        });
+
+        $('.car-plate').click(function (e) {
+            $('.car-plate').removeClass('active');
+            licensePlates.go($(this).addClass('active').index()).show();
+        });
+
+        $(document).click(function (e) {
+            console.log(e.target.className);
+            // 收起键盘2
+            if (e.target.className !== 'car-plate active') {
+                $('.car-plate').removeClass('active');
+                licensePlates.hide();
+            }
+            // 收起键盘1
+            if (e.target.className !== 'input_one') {
+                licensePlates1.hide();
+            }
+        });
+
+    }
 
 </script>
+<script src="https://cdn.bootcss.com/jquery/3.2.1/jquery.min.js"></script>
+<script src="./Myjs/licensePlate.es5.js"></script>
 
 </html>

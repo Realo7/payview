@@ -168,7 +168,8 @@
     padding-left: 35%;
 }
 
-p{
-    padding-top: 3%;
+.inTM{
+    padding-top: 1%;
+     /* line-height: 40px; */
     font-size: 24px;
 }

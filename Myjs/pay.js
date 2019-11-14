@@ -104,7 +104,7 @@ function connectws(ws_url) {
             sendProPay("StartPay");
 
             document.getElementById("ShowStatus").innerHTML = "连接服务器成功";
-            document.getElementById("ShowStatus").style.color = "#ffffff";
+            document.getElementById("ShowStatus").style.color = "#00000";
 
             //定时执行，60秒
             window.setInterval(
@@ -447,13 +447,17 @@ function showCashPay(isShow) {
 
     if (isShow) {
         document.getElementById("cash").style.display = "block";//隐藏
+        document.getElementById("cash1").style.display = "block";//隐藏
         document.getElementById("qrcode").style.display = "none";//隐藏
-        document.getElementById('cash').style.marginLeft = '25%'
+        document.getElementById("qrcode1").style.display = "none";//隐藏
+        document.getElementById('cash').style.width = '90%'
     }
     else {
         document.getElementById("qrcode").style.display = "block";//显示
-        document.getElementById('qrcode').style.marginLeft = '25%'
+         document.getElementById("qrcode1").style.display = "block"
+        document.getElementById('qrcode').style.width = '90%'
         document.getElementById("cash").style.display = "none";//隐藏
+        document.getElementById("cash1").style.display = "none";//隐藏
     }
 }
 
