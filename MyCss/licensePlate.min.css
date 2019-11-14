@@ -1,8 +1,10 @@
 .block-license-plate-keyboard{
     position:fixed;
     bottom:0;
-    width:50%;
-    margin: auto;
+    width:40%;
+    margin: center;
+    margin-left: 14%;
+    margin-bottom: 14.5%;
     -moz-box-sizing:border-box;
     box-sizing:border-box;
     padding:12px 10px;
@@ -44,10 +46,13 @@
         justify-content:space-between
     }
     .license-list>li i,.license-list>li text{
-        display:inline-block;width:24px;height:35px
+        display:inline-block;
+        width:9%;
+        height:70px;
+        padding-top: 3%;
     }
     .license-list>li:not(:last-child){
-        margin-bottom:12px
+        margin-bottom:6px
     }
     .license-list>li i{
         pointer-events:none
