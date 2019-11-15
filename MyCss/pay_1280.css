@@ -27,7 +27,7 @@
 
 .content_middle {
     width: 90%;
-    height: 55%;
+    height: 93%;
     /*border: 1px solid red;*/
     margin-left: 5%;
     margin-right: 5%;
@@ -46,7 +46,7 @@
 }
 
 #div_content {
-    /* background-image: url(../images/background.png); */
+    min-width: 960px;
     color: black;
     background: white;
     background-size: 100% 100%;
@@ -141,7 +141,7 @@
     text-align:center;
 }
 .commoninfo{
-    padding-left: 5%;
+    padding-left: 10%;
     padding-top: 10%;
     line-height: 50px;
     font-size: 20px;
@@ -161,9 +161,10 @@
     
 }
 .constpay{
-    padding-left: 23%;
+    padding-left: 12%;
     font-size: 26px;
     font-weight:bolder;
+    display: inline;
 }
 .constpay02{
     padding-left: 35%;
@@ -173,4 +174,14 @@
     padding-top: 1%;
      /* line-height: 40px; */
     font-size: 24px;
+}
+.qrimg{
+    width: 330px;
+}
+.cashimg{
+    height: 45%;
+    background-image: url(../images/cashmechine.png);
+    background-size: 45% 100%;
+    background-position:center center;
+    background-repeat: no-repeat; 
 }

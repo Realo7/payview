@@ -1,0 +1,8 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<Setting> 
+  <damPort>COM3</damPort>
+  <cashCodePort>COM2</cashCodePort>
+  <scanPort>COM1</scanPort>
+  <printPort>COM5</printPort>
+</Setting>
+

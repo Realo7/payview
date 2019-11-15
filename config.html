@@ -1,0 +1,410 @@
+﻿<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="utf-8">
+    <title>自助缴费配置</title>
+    <meta name="renderer" content="webkit">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+    <link href="./layui/css/layui.css" rel="stylesheet" />
+    <script src="./Myjs/jquery-3.2.1.min.js"></script>
+    <script src="./layui/layui.js"></script>
+    <script src="./Myjs/readxml.js"></script>
+    <script>
+        layui.use(['form', 'upload', 'layer'], function () {
+
+            var form = layui.form;
+
+            var num = randomNum(1, 100);
+
+            var xmlurl = "Config//config.xml?v=" + num;
+
+            //是否存在配置文件
+            if (IsExistsFile(xmlurl)) {
+
+                //加载XML文件 注意XML字段不可以有空值
+                var root = getxmlDoc(xmlurl);
+
+                var wx_change_QR = root.getElementsByTagName("wx_change_QR")[0].firstChild.nodeValue;
+
+                var serverIP = root.getElementsByTagName("serverIP")[0].firstChild.nodeValue;
+                var serverPort = root.getElementsByTagName("serverPort")[0].firstChild.nodeValue;
+                var wsPort = root.getElementsByTagName("wsPort")[0].firstChild.nodeValue;
+
+                var telPhone = root.getElementsByTagName("telPhone")[0].firstChild.nodeValue;
+
+                var ThirdPayUrl = root.getElementsByTagName("ThirdPayUrl")[0].firstChild.nodeValue;
+
+                $("#wx_change_QR").val(wx_change_QR);
+                $("#serverIP").val(serverIP);
+                $("#serverPort").val(serverPort);
+                $("#wsPort").val(wsPort);
+                $("#telPhone").val(telPhone);
+                $("#ThirdPayUrl").val(ThirdPayUrl);
+
+                form.render();
+            }
+
+        });
+
+        //生成从minNum到maxNum的随机数
+        function randomNum(minNum, maxNum) {
+            switch (arguments.length) {
+                case 1:
+                    return parseInt(Math.random() * minNum + 1, 10);
+                    break;
+                case 2:
+                    return parseInt(Math.random() * (maxNum - minNum + 1) + minNum, 10);
+                    break;
+                default:
+                    return 0;
+                    break;
+            }
+        }
+    </script>
+
+    <!-- 注意：如果你直接复制所有代码到本地，上述css路径需要改成你本地的 -->
+</head>
+
+<body>
+    <div class="layui-layout layui-layout-admin">
+        <div class="layui-header">
+            <ul class="layui-nav layui-layout-right">
+                <li class="layui-nav-item">
+                    <a href="">
+                        自助缴费机系统配置
+                    </a>
+                </li>
+                <!--<li class="layui-nav-item"><a href="">退出</a></li>-->
+            </ul>
+        </div>
+    </div>
+
+    <fieldset class="layui-elem-field layui-field-title" style="margin-top: 20px;">
+        <legend>配置集合</legend>
+    </fieldset>
+    <form class="layui-form" action="">
+        <div class="layui-form-item">
+            <label class="layui-form-label">设备序列号</label>
+            <div class="layui-input-inline">
+                <input type="text" id="EquipmentSerialNumber" name="EquipmentSerialNumber" lay-verify="required"
+                    placeholder="请输入设备序列号" autocomplete="off" class="layui-input">
+            </div>
+            <div class="layui-input-inline">
+                <button style="float: left;" type="button" class="layui-btn" lay-filter="query"
+                    lay-submit="">读取配置</button>
+            </div>
+
+        </div>
+    </form>
+
+    <script>
+        layui.use(['form', 'layedit', 'laydate'], function () {
+            var form = layui.form
+                , layer = layui.layer
+                , layedit = layui.layedit
+                , laydate = layui.laydate;
+
+            //创建一个编辑器
+            var editIndex = layedit.build('LAY_demo_editor');
+
+            //监听提交
+            form.on('submit(query)', function (data) {
+
+                var num = randomNum(1, 100);
+
+                //开始读取配置信息 发送初始化命令给中间件
+                var xmlurl_ps = "Config//" + data.field.EquipmentSerialNumber + "//PSconfig.xml?v=" + num;
+
+                //是否存在配置文件
+                if (IsExistsFile(xmlurl_ps)) {
+
+                    //加载XML文件 注意XML字段不可以有空值
+                    var root_ps = getxmlDoc(xmlurl_ps);
+                    var damPort = root_ps.getElementsByTagName("damPort")[0].firstChild.nodeValue;
+                    var cashCodePort = root_ps.getElementsByTagName("cashCodePort")[0].firstChild.nodeValue;
+                    var scanPort = root_ps.getElementsByTagName("scanPort")[0].firstChild.nodeValue;
+                    var printPort = root_ps.getElementsByTagName("printPort")[0].firstChild.nodeValue;
+
+                    var payMode = root_ps.getElementsByTagName("payMode")[0].firstChild.nodeValue;
+
+                    var inputPlate = root_ps.getElementsByTagName("inputMode")[0].firstChild.nodeValue;
+
+                    var inputPlate = payMode.substring(0, 1);
+                    var sacnTicket = payMode.substring(1, 2);
+
+                    var payModecash = payMode.substring(0, 1);
+                    var payModescan = payMode.substring(1, 2);
+
+                    if (inputPlate == "1") {
+                        var unitTypeCheckbox = $("input[id='inputPlate']");
+                        for (var i = 0; i < unitTypeCheckbox.length; i++) {
+                            unitTypeCheckbox[i].checked = true;
+                        }
+                    } form.render();
+
+                    if (sacnTicket == "1") {
+
+                        var unitTypeCheckbox = $("input[id='sacnTicket']");
+                        for (var i = 0; i < unitTypeCheckbox.length; i++) {
+                            unitTypeCheckbox[i].checked = true;
+                        }
+                    } form.render();
+
+                    if (payModecash == "1") {
+                        var unitTypeCheckbox = $("input[id='payModecash']");
+                        for (var i = 0; i < unitTypeCheckbox.length; i++) {
+                            unitTypeCheckbox[i].checked = true;
+                        }
+                    } form.render();
+
+                    if (payModescan == "1") {
+                        var unitTypeCheckbox = $("input[id='payModescan']");
+                        for (var i = 0; i < unitTypeCheckbox.length; i++) {
+                            unitTypeCheckbox[i].checked = true;
+                        }
+                    } form.render();
+
+                    $("#printPort").val(printPort);
+                    $("#cashCodePort").val(cashCodePort);
+                    $("#scanPort").val(scanPort);
+                    $("#damPort").val(damPort);
+
+                    $("#payModecash").val(payModecash);
+
+                    layui.form.render("select");
+
+                }
+                else {
+                    alert("配置文件不存在");
+                    return "";
+                }
+
+                return false;
+            });
+
+        });
+    </script>
+
+    <form class="layui-form" action="">
+        <fieldset class="layui-elem-field layui-field-title" style="margin-top: 20px;">
+            <legend>自助机参数</legend>
+        </fieldset>
+        <div class="layui-form-item">
+            <div class="layui-inline">
+                <div class="layui-form-item">
+                    <label class="layui-form-label">打印机</label>
+                    <div class="layui-input-block">
+                        <select id="printPort" name="printPort">
+                            <option value=""></option>
+                            <option value="COM1">COM1</option>
+                            <option value="COM2">COM2</option>
+                            <option value="COM3">COM3</option>
+                            <option value="COM4">COM4</option>
+                            <option value="COM5">COM5</option>
+                        </select>
+                    </div>
+                </div>
+            </div>
+
+            <div class="layui-inline">
+                <div class="layui-form-item">
+                    <label class="layui-form-label">纸币接收</label>
+                    <div class="layui-input-block">
+                        <select id="cashCodePort" name="cashCodePort">
+                            <option value=""></option>
+                            <option value="COM1">COM1</option>
+                            <option value="COM2">COM2</option>
+                            <option value="COM3">COM3</option>
+                            <option value="COM4">COM4</option>
+                            <option value="COM5">COM5</option>
+                        </select>
+                    </div>
+                </div>
+            </div>
+
+            <div class="layui-inline">
+                <div class="layui-form-item">
+                    <label class="layui-form-label">扫描枪</label>
+                    <div class="layui-input-block">
+                        <select id="scanPort" name="scanPort">
+                            <option value=""></option>
+                            <option value="COM1">COM1</option>
+                            <option value="COM2">COM2</option>
+                            <option value="COM3">COM3</option>
+                            <option value="COM4">COM4</option>
+                            <option value="COM5">COM5</option>
+                        </select>
+                    </div>
+                </div>
+            </div>
+
+            <div class="layui-inline">
+                <div class="layui-form-item">
+                    <label class="layui-form-label">DM模块</label>
+                    <div class="layui-input-block">
+                        <select id="damPort" name="damPort">
+                            <option></option>
+                            <option value="COM1">COM1</option>
+                            <option value="COM2">COM2</option>
+                            <option value="COM3">COM3</option>
+                            <option value="COM4">COM4</option>
+                            <option value="COM5">COM5</option>
+                        </select>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="layui-form-item">
+            <label class="gard layui-form-label">输入方式</label>
+            <div class="layui-input-block">
+                <input type="checkbox" id="inputPlate" name="inputPlate" title="输入车牌" value="1">
+                <input type="checkbox" id="sacnTicket" name="sacnTicket" title="扫票" value="1">
+            </div>
+            <br>
+            <label class="gard layui-form-label">支付方式</label>
+            <div class="layui-input-block">
+                <input type="checkbox" id="payModecash" name="payModecash" title="现金" value="1">
+                <input type="checkbox" id="payModescan" name="payModescan" title="扫码" value="1">
+                <button style="" class="layui-btn" lay-submit="" lay-filter="demo2">立即提交</button>
+                <button type="reset" class="layui-btn layui-btn-primary">重置</button>
+            </div>
+        </div>
+    </form>
+
+    <script>
+
+        layui.use(['form', 'layedit', 'laydate'], function () {
+            var form = layui.form
+                , layer = layui.layer
+                , layedit = layui.layedit
+                , laydate = layui.laydate;
+
+            //创建一个编辑器
+            var editIndex = layedit.build('LAY_demo_editor');
+
+            //监听提交
+            form.on('submit(demo2)', function (data) {
+
+                var num = document.getElementById("EquipmentSerialNumber").value;
+
+                data.field.EquipmentSerialNumber = num;
+
+                $.ajax({
+                    type: 'get',
+                    url: 'process.ashx?data=' + JSON.stringify(data.field) + " &type=0",//json对象转换为json字符串,
+                    data: {},
+                    //dataType: 'json',
+                    async: false,
+                    success: function (result) {
+                        if (result == "Success") {
+                            alert("保存成功")
+                        } else {
+                            alert("保存失败")
+                        }
+                    },
+                    error: function () {
+                    }
+                });
+                return false;
+            });
+
+        });
+    </script>
+
+    <form class="layui-form" action="">
+        <fieldset class="layui-elem-field layui-field-title">
+            <legend>全局参数</legend>
+        </fieldset>
+        <div class="layui-form-item">
+            <div class="layui-inline">
+                <label class="layui-form-label">微信找零url</label>
+                <div class="layui-input-inline">
+                    <input type="text" id="wx_change_QR" name="wx_change_QR" placeholder="" autocomplete="off"
+                        class="layui-input" style="width:300%">
+                </div>
+            </div>
+        </div>
+        <div class="layui-form-item">
+            <div class="layui-inline">
+                <label class="layui-form-label">被扫支付url</label>
+                <div class="layui-input-inline">
+                    <input type="text" id="ThirdPayUrl" name="ThirdPayUrl" placeholder="" autocomplete="off"
+                        class="layui-input" style="width:300%">
+                </div>
+            </div>
+        </div>
+
+        <div class="layui-form-item">
+            <div class="layui-inline">
+                <label class="layui-form-label">服务器ip</label>
+                <div class="layui-input-inline">
+                    <input type="text" id="serverIP" name="serverIP" placeholder="" autocomplete="off"
+                        class="layui-input">
+                </div>
+            </div>
+            <div class="layui-inline">
+                <label class="layui-form-label" style="width:100px">服务器端口号</label>
+                <div class="layui-input-inline">
+                    <input type="text" id="serverPort" name="serverPort" placeholder="" autocomplete="off"
+                        class="layui-input">
+                </div>
+            </div>
+            <div class="layui-inline">
+                <label class="layui-form-label" style="width:80px">web端口号</label>
+                <div class="layui-input-inline">
+                    <input type="text" id="wsPort" name="wsPort" placeholder="" autocomplete="off" class="layui-input">
+                </div>
+            </div>
+        </div>
+
+        <div class="layui-form-item">
+            <div class="layui-inline">
+                <label class="layui-form-label">客服电话</label>
+                <div class="layui-input-inline">
+                    <input type="text" id="telPhone" name="telPhone" autocomplete="off" class="layui-input">
+                </div>
+                <div class="layui-input-inline">
+                    <button style="" class="layui-btn" lay-submit="" lay-filter="demo1">立即提交</button>
+                </div>
+            </div>
+        </div>
+    </form>
+    <script>
+        layui.use(['form', 'layedit', 'laydate'], function () {
+
+            var form = layui.form
+                , layer = layui.layer
+                , layedit = layui.layedit
+                , laydate = layui.laydate;
+
+
+            //创建一个编辑器
+            var editIndex = layedit.build('LAY_demo_editor');
+
+            //监听提交
+            form.on('submit(demo1)', function (data) {
+
+                $.ajax({
+                    type: 'get',
+                    url: 'process.ashx?data=' + JSON.stringify(data.field) + "&type=1",//json对象转换为json字符串,
+                    data: {},
+                    //dataType: 'json', //这里设置为JSON 返回的字符串必须是JSON
+                    async: false,
+                    success: function (result) {
+                        if (result == "Success") {
+                            alert("保存成功")
+                        } else {
+                            alert("保存失败")
+                        }
+                    },
+                    error: function () {
+                    }
+                });
+            });
+        });
+    </script>
+</body>
+
+</html>

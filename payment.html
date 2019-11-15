@@ -28,11 +28,10 @@
 
         <div class="mui-row content_middle">
             <div class="mui-col-xs-1"></div>
-            <div class="mui-col-xs-5">
+            <div class="mui-col-xs-4">
                 <div class="mui-row middleleft">
                     <span class="span1">车牌号 : </span>
                     <div id="lblplate" class="span1"> </div>
-                    <br>
                     <br>
                     <span class="span1">票号 : </span>
                     <div id="lblticket" class="span1"></div>
@@ -54,22 +53,22 @@
                     </span>
                     <br>
                     <br>
-                    <br>
+
                     <span style="font-size: 26px;font-weight:bolder;">总应收金额</span>
                     <span id="totalMon" class="constpay">￥20.00</span>
                     <!-- <br><br><br><br><br> -->
                 </div>
 
                 <div id="info" class="mui-row">
-                    <div id="qrcode1" class="QR01">
-                        <span>二维码支付</span>
-                    </div>
-                    <div id="cash1" class="QR01" style="display:none">
+                    <div id="cash1" class="QR01">
                         <span>现金支付</span>
+                    </div>
+                    <div id="qrcode1" class="QR01" style="display:none">
+                        <span>二维码支付</span>
                         <div id="CountDown" style="display: inline;"></div>
                     </div>
 
-                    <div class=" commoninfo">
+                    <div class="commoninfo">
                         <span>应付金额</span>
                         <span id="shouldpay" class="constpay02">￥20.00</span>
                         <br>
@@ -85,22 +84,22 @@
                 </div>
 
             </div>
-            <div class="mui-col-xs-1"></div>
+            <!-- <div class="mui-col-xs-1"></div> -->
             <!-- 中部右侧 -->
-            <div class="mui-col-xs-4">
-                <div id="qrcode" style="height: 50%;text-align: center;">
-                    <img src="./images/085拷贝.png" alt="未显示二维码" width="70%" id="qrcode-logo">
+            <div class="mui-col-xs-6" style="height: 100%;">
+                <div id="qrcode" style="height:60%;text-align: center;">
+                    <img src="./images/085拷贝.png" alt="未显示二维码" id="qrcode-logo" class="qrimg">
                     <br>
-                    <span style="font-size: 23px;line-height: 50px;">打开支付宝APP或微信进行扫码支付</span>
+                    <span style="font-size: 23px;line-height: 30px;">扫码支付</span>
                 </div>
-                <br>
-                <div id="cash" style="height: 50%;text-align: center;">
-                    <img src="./images/cashmechine.png" width="50%">
-                </div>
-                <div class="mui-col-xs-1"></div>
-            </div>
 
+
+                <div id="cash" class="cashimg"></div>
+            </div>
+            <div class="mui-col-xs-1"></div>
         </div>
+
+    </div>
 
     </div>
     </div>

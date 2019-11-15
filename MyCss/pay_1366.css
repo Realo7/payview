@@ -29,7 +29,7 @@
 
 .content_middle {
     width: 90%;
-    height: 94%;
+    height: 93%;
     /*border: 1px solid red;*/
     margin-left: 5%;
     margin-right: 5%;
@@ -163,7 +163,7 @@
     padding-left: 10%;
 }
 .constpay{
-    padding-left: 43%;
+    padding-left: 33%;
     font-size: 28px;
     font-weight:bolder;
 }
@@ -177,4 +177,14 @@ constpay03{
     padding-top: 3%;
     line-height: 40px;
     font-size: 24px;
+}
+.qrimg{
+    width: 55%;
+}
+.cashimg{
+    height: 45%;
+    background-image: url(../images/cashmechine.png);
+    background-size: 45% 100%;
+    background-position:center center;
+    background-repeat: no-repeat; 
 }

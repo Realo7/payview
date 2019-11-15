@@ -1,0 +1,9 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Setting>
+  <wx_change_QR>https://parks.borchaw.com/wpc/ScanBarcodeForm/ThirdPayChange.aspx</wx_change_QR>
+  <telPhone>123456789</telPhone>
+  <serverIP>192.168.1.239</serverIP>
+  <serverPort>10005</serverPort>
+  <wsPort>8080</wsPort>
+  <ThirdPayUrl>http://192.168.1.219:9980/OnlinePayService.asmx</ThirdPayUrl>
+</Setting>
