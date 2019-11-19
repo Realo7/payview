@@ -129,10 +129,10 @@
 
                     var payMode = root_ps.getElementsByTagName("payMode")[0].firstChild.nodeValue;
 
-                    var inputPlate = root_ps.getElementsByTagName("inputMode")[0].firstChild.nodeValue;
+                    var inputMode = root_ps.getElementsByTagName("inputMode")[0].firstChild.nodeValue;
 
-                    var inputPlate = payMode.substring(0, 1);
-                    var sacnTicket = payMode.substring(1, 2);
+                    var inputPlate = inputMode.substring(0, 1);
+                    var scanTicket = inputMode.substring(1, 2);
 
                     var payModecash = payMode.substring(0, 1);
                     var payModescan = payMode.substring(1, 2);
@@ -144,9 +144,8 @@
                         }
                     } form.render();
 
-                    if (sacnTicket == "1") {
-
-                        var unitTypeCheckbox = $("input[id='sacnTicket']");
+                    if (scanTicket == "1") {
+                        var unitTypeCheckbox = $("input[id='scanTicket']");
                         for (var i = 0; i < unitTypeCheckbox.length; i++) {
                             unitTypeCheckbox[i].checked = true;
                         }
@@ -171,7 +170,10 @@
                     $("#scanPort").val(scanPort);
                     $("#damPort").val(damPort);
 
+                    $("#inputPlate").val(inputPlate);
+                    // $("#scanTicket").val(scanTicket);
                     $("#payModecash").val(payModecash);
+                    // $("#payModescan").val(payModescan);
 
                     layui.form.render("select");
 
@@ -260,7 +262,7 @@
             <label class="gard layui-form-label">输入方式</label>
             <div class="layui-input-block">
                 <input type="checkbox" id="inputPlate" name="inputPlate" title="输入车牌" value="1">
-                <input type="checkbox" id="sacnTicket" name="sacnTicket" title="扫票" value="1">
+                <input type="checkbox" id="scanTicket" name="scanTicket" title="扫票" value="1">
             </div>
             <br>
             <label class="gard layui-form-label">支付方式</label>

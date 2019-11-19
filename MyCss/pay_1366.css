@@ -28,6 +28,8 @@
 }
 
 .content_middle {
+    /* color: black;
+    background: white; */
     width: 90%;
     height: 93%;
     /*border: 1px solid red;*/
@@ -143,7 +145,7 @@
 }
 
 .span1{
-    line-height: 40px;
+    line-height: 50px;
     font-size:32px;
     color: dodgerblue;
     display: inline;
@@ -179,7 +181,7 @@ constpay03{
     font-size: 24px;
 }
 .qrimg{
-    width: 55%;
+    width: 65%;
 }
 .cashimg{
     height: 45%;
@@ -187,4 +189,5 @@ constpay03{
     background-size: 45% 100%;
     background-position:center center;
     background-repeat: no-repeat; 
+    margin-left: 10%;
 }

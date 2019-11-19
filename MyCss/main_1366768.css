@@ -12,7 +12,6 @@
 }
 
 #div_content {
- 
     color: black;
     background: white;
     background-size: 100% 100%;
@@ -37,11 +36,12 @@
     background: white;
     background-size: 100% 100%;
     width: 70%;
-    height: 50%;
+    height: 83%;
     background-repeat: no-repeat;
     margin-top: 3em;
     margin-left: 15%;
     padding-top: 2em;
+    overflow: hidden;
 }
 
 #Help { 
@@ -70,7 +70,7 @@
 }
 
 #showTitle {
-    height: 15%;
+    height: 80%;
     font-size: 45px;
     color: black;
     padding-top: 1em;
