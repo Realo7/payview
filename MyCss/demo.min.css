@@ -16,9 +16,21 @@
     /* max-resolution: right 20px; */
 }
 .input_li .car_input input.active{border:1px solid #4076ff}
-.input_li .car_input button{
+
+.btn{
     margin-left: 5%;
     height: 40px;
     width: 60px;
     background-color: skyblue;
+}
+.btn1{
+    height: 40px;
+    width: 70px;
+    background: url(../images/plus_square_48px_1187922_easyicon.net.png);
+    background-size: 100% 100%;
+    display: inline;
+    border: none;
+}
+#in1{
+    display: none;
 }

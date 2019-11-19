@@ -17,6 +17,7 @@ var sendInit;
 
 var tempInterval;
 
+
 setTimeout(function () {
 
     var data = getQueryVariable("callback");//处理收到的参数

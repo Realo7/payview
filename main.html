@@ -47,8 +47,14 @@
                             <input class="car-plate" readonly="readonly" type="text" maxlength="1" placeholder="">
                             <input class="car-plate" readonly="readonly" type="text" maxlength="1" placeholder="">
                             <input class="car-plate" readonly="readonly" type="text" maxlength="1" placeholder="">
+                            <button class="btn1" id="btn1"></button>
+
+                            <input id="in1" class="car-plate" readonly="readonly" type="text" maxlength="1"
+                                placeholder="">
+
                             <button class="btn">查询</button>
                         </div>
+
                     </div>
                     <div id="showImg" class="mui-row">
                         <img style="max-width: 100%;max-height: 100%" src="./images/Scan.png?v=1" />
@@ -85,9 +91,11 @@
 
 </body>
 <script>
+    document.getElementById("btn1").onclick = function () {
+        document.getElementById("btn1").style.display = "none"
+        document.getElementById("in1").style.display = "inline"
+    }
     window.onload = function () {
-
-
         /* 注册键盘1 */
         var licensePlates1 = new licensePlate({
             title: '示例1键盘',
