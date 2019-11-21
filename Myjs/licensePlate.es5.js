@@ -12,7 +12,7 @@ function _classCallCheck(instance, Constructor) { if (!(instance instanceof Cons
  * git: https://github.com/Downeystark/licensePlate.git
  */
 var licensePlate = function () {
-
+    
     /* 构造函数 */
     function licensePlate(options) {
         _classCallCheck(this, licensePlate);

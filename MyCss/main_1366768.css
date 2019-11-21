@@ -3,8 +3,8 @@
 }
 
 .mui-toast-message {
-    background-color: white;
-    opacity: 1; /*toast中背景色的透明度*/
+    background-color: rgb(211,255,254);
+    opacity: 0.8; /*toast中背景色的透明度*/
     color: red; /*toast中字体颜色*/
     width: 500px; /*toast宽度*/
     padding: 50px 10px; /*toast中文字的位置*/
@@ -24,10 +24,19 @@
     height: 6%;
     color: black;
     background: white;
-    /* background-image: url(../images/top.png); */
-    /* background-size: 100% 100%; */
+    background-image: url(../images/分割线.png);
+    background-size: 100% 50%;
     font-size: 24px;
-    padding-top: 0.5%;
+    background-position-y: bottom;
+    background-repeat: no-repeat;
+}
+#ShowStatus{
+    padding-top:0.5px;
+}
+#Date {
+    padding-top: 2px;
+    padding-right: 5%;
+    font-size: 24px;
 }
 
 #Middle {
@@ -35,7 +44,7 @@
     color: black;
     background: white;
     background-size: 100% 100%;
-    width: 70%;
+    width: 75%;
     height: 83%;
     background-repeat: no-repeat;
     margin-top: 3em;
@@ -47,12 +56,11 @@
 #Help { 
     margin-left: 5%;
     width: 90%;
-    height: 8%;
-    font-size: 45px;
+    height: 4%;
     color: black;
     background-color: white;
-    margin-top: 1em;
-    padding: 4%;
+    padding: 1%;
+    margin-top:63%;
 }
 
 #Foot {
@@ -65,15 +73,12 @@
     position: absolute;
 }
 
-#Date {
-    padding-right: 5%;
-}
+
 
 #showTitle {
     height: 80%;
     font-size: 45px;
     color: black;
-    padding-top: 1em;
 }
 
 #showImg {

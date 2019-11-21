@@ -23,14 +23,15 @@
 }
 
 #Top {
-    height: 6%;
+    height: 8%;
     color: black;
     background: white;
-    /* background-image: url(../images/top.png); */
-    /* background-size: 100% 100%; */
-    font-size: 24px;
-    padding: 1%;
-    padding-top: 2%;
+    background-image: url(../images/分割线.png);
+    background-size: 100% 50%;
+    background-repeat: no-repeat;
+    font-size: 20px;
+    padding-top: 0.5%;
+    background-position-y: bottom;
 }
 
 #Middle {
@@ -39,7 +40,7 @@
     background: white;
     background-size: 100% 100%;
     width: 60%;
-    height: 90%;
+    height: 80%;
     background-repeat: no-repeat;
     margin-top: 5%;
     margin-left: 20%;  

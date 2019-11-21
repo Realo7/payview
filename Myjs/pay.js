@@ -9,10 +9,9 @@ var f1 = String.fromCharCode(byte1f);
 var b02 = String.fromCharCode(byte02);
 var b03 = String.fromCharCode(byte03);
 
-
 window.onload = function () {
 
-    //console.log(encodeURIComponent("苏B003A2"));
+    ShowQR("123456");
 
     SerialNum = "";//清空缓存
 
@@ -37,7 +36,7 @@ window.onload = function () {
     var data = getQueryVariable("data");
     console.log("收到参数" + data);
 
-    if (data == "false" || data == false) {
+    if (data == "false" || data == false) {       
 
     }
     else {
@@ -64,7 +63,7 @@ window.onload = function () {
 
                 mui.toast("支付超时");
 
-                console.log("支付超时" + JSON.stringify(otherparam));
+               // console.log("支付超时" + JSON.stringify(otherparam));
 
                 window.location.href = "main.html?callback=" + JSON.stringify(otherparam);
             }
@@ -494,7 +493,7 @@ function xyqrcode(options) {
         mode: 4,
         quiet: 1,
         radius: 1,
-        size: 360
+        size: 420
     };
 
     if (options) {

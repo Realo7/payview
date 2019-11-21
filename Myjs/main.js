@@ -10,12 +10,89 @@ var b02 = String.fromCharCode(byte02);
 var b03 = String.fromCharCode(byte03);
 
 var ws;
-var ws_url;//缓存通讯url
-//var scanUrl;//扫码付url
+var ws_url;//缓存通讯url 
 var wx_change_QR;//微信找零url
 var sendInit;
 
 var tempInterval;
+var licensePlates1;
+var licensePlates;
+
+//根据车牌查询缴费信息
+function search() {
+
+    var plate = '';
+    for (var i = 0; i < 8; i++) {
+        var ndNow = $('.car-plate').eq(i);
+        if (ndNow.val() == '') { break; }
+        plate = plate + ndNow.val();
+    }
+    if (plate.length >= 7) {
+        var tempsendInit = b02 + "Msg" + f1 + "Req" + d1 + "Type" + f1 + "Search" + d1 + "Code" + f1 + plate + d1 + "CodeType" + f1 + "1" + d1 + "crc" + f1 + d1 + b03;
+        ws.send(tempsendInit);
+        console.log("发送" + tempsendInit + "成功");
+
+    } else { mui.toast("请输入完整车牌"); }
+}
+
+window.onload = function () {
+
+    /* 注册键盘1 */
+    licensePlates1 = new licensePlate({
+        title: '示例1键盘',
+        className: 'demo_one',
+        value: [''],
+        step: 1,
+        onPress: (value, e) => {
+            console.log(value);
+            $('.input_one').val(value.join(''));
+        },
+    });
+
+    $('.input_one').click(function () {
+        licensePlates1.show();
+    });
+
+    $('#btn-remove').click(function () {
+        licensePlates1.remove();
+    });
+
+    /* 注册键盘2 */
+    licensePlates = new licensePlate({
+        title: '车牌号键盘',
+        className: 'demo_two',
+        onPress: (value, e) => {
+            console.log(value);
+            var ndNow = $('.car-plate').removeClass('active').eq(licensePlates.step);
+            ndNow.val(value[licensePlates.step]);
+            if (e.target.className === 'license-delete' || licensePlates.step === licensePlates.level.length - 1) {
+                ndNow.addClass('active');
+            } else {
+                ndNow.next().addClass('active');
+            }
+        },
+    });
+
+    $('.car-plate').click(function (e) {
+        $('.car-plate').removeClass('active');
+
+        licensePlates.go($(this).addClass('active').index()).show();
+    });
+
+    $(document).click(function (e) {
+        console.log(e.target.className);
+        // 收起键盘2
+        if (e.target.className !== 'car-plate active') {
+            $('.car-plate').removeClass('active');
+            // licensePlates.hide();
+        }
+        // 收起键盘1
+        if (e.target.className !== 'input_one') {
+            licensePlates1.hide();
+        }
+    });
+    licensePlates.show();
+}
 
 
 setTimeout(function () {
@@ -84,6 +161,7 @@ setInterval(function () {
 
 //初始化中间件参数
 function getparams_ps(root, root_ps, data) {
+    console.log("chus")
 
     //scanUrl = root.getElementsByTagName("scanUrl")[0].firstChild.nodeValue;
     wx_change_QR = root.getElementsByTagName("wx_change_QR")[0].firstChild.nodeValue;
@@ -93,14 +171,37 @@ function getparams_ps(root, root_ps, data) {
     var wsPort = root.getElementsByTagName("wsPort")[0].firstChild.nodeValue;
     var ThirdPayUrl = root.getElementsByTagName("ThirdPayUrl")[0].firstChild.nodeValue;
 
-    var telPhone = root.getElementsByTagName("telPhone")[0].firstChild.nodeValue;
-    document.getElementById("telphone").innerHTML = telPhone;
+    //var telPhone = root.getElementsByTagName("telPhone")[0].firstChild.nodeValue;
+    //document.getElementById("telphone").innerHTML = telPhone;
 
     var damPort = root_ps.getElementsByTagName("damPort")[0].firstChild.nodeValue;
     var cashCodePort = root_ps.getElementsByTagName("cashCodePort")[0].firstChild.nodeValue;
     var scanPort = root_ps.getElementsByTagName("scanPort")[0].firstChild.nodeValue;
     var printPort = root_ps.getElementsByTagName("printPort")[0].firstChild.nodeValue;
     var pcAdr = data;
+    var inputMode = root_ps.getElementsByTagName("inputMode")[0].firstChild.nodeValue;
+
+    var inputPlate = inputMode.substring(0, 1);
+    var scanTicket = inputMode.substring(1, 2);
+
+    if (inputPlate == 0) {
+        document.getElementById("inpt").style.display = "none";
+        document.getElementById("platetext").style.display = "none";
+        licensePlates.hide();
+        document.getElementById("helpimg").style.marginTop = "-70%";
+    } else {
+        console.log("输入车牌模式");
+    }
+
+    if (scanTicket == 0) {
+        document.getElementById("ticketext").style.display = "none";
+        var img = document.getElementById("imgmechine");
+        img.src = "";
+        licensePlates.show();
+        document.getElementById("helpimg").style.marginTop = "10%";
+    } else {
+        console.log("扫票模式")
+    }
 
     var ParaInfo = {};
     ParaInfo.wx_change_QR = wx_change_QR;
@@ -110,7 +211,7 @@ function getparams_ps(root, root_ps, data) {
     ParaInfo.cashCodePort = cashCodePort;
     ParaInfo.scanPort = scanPort;
     ParaInfo.printPort = printPort;
-    ParaInfo.telPhone = telPhone;
+    // ParaInfo.telPhone = telPhone;
     ParaInfo.pcAdr = pcAdr;
     ParaInfo.ThirdPayUrl = ThirdPayUrl;
 
@@ -250,6 +351,9 @@ function processMsg(tempdata) {
         //中间件主动推送的缴费信息
         switch (type) {
             case "PushDealInfo":
+                processSearch(tempdata);//处理显示缴费信息
+                break;
+            case "Search":
                 processSearch(tempdata);//处理显示缴费信息
                 break;
             case "ShowInfo":

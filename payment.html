@@ -8,13 +8,14 @@
     <meta name="apple-mobile-web-app-capable" content="yes">
     <meta name="apple-mobile-web-app-status-bar-style" content="black">
     <link rel="stylesheet" href="./css/mui.min.css">
+    <link rel="stylesheet" href="./MyCss/common.css">
     <link rel="stylesheet" type="text/css" href="MyCss/pay_1280.css" media="screen and (max-width:1280px)" />
     <link rel="stylesheet" type="text/css" href="MyCss/pay_1366.css" media="screen and (min-width:1281px)" />
     <script src="./js/mui.js"></script>
     <script src="Myjs/common.js"></script>
     <script src="Myjs/jquery-3.2.1.min.js"></script>
     <script src="Myjs/jquery-qrcode-0.14.0.js"></script>
-    <script src="Myjs/pay.js?v=15"></script>
+    <script src="Myjs/pay.js?v=17"></script>
 </head>
 
 <body>
@@ -23,60 +24,53 @@
             <div id="ShowStatus" class="mui-col-xs-3 mui-text-center">正常服务</div>
             <div class="mui-col-xs-5">
             </div>
-            <div id="Date" class="mui-col-xs-4 mui-text-right lbl"></div>
+            <div id="Date" class="mui-col-xs-4 mui-text-right lb1">2019-06-20 12:00:00</div>
         </div>
-
         <div class="mui-row content_middle">
             <div class="mui-col-xs-1"></div>
             <div class="mui-col-xs-5">
                 <div class="mui-row middleleft">
-                    <span class="span1">车牌号 : </span>
-                    <div id="lblplate" class="span1"> </div>
+                    <span class="span1">车牌号:</span>
+                    <span id="lblplate" class="span2">苏B003A2</span>
                     <br>
-                    <span class="span1">票号 : </span>
-                    <div id="lblticket" class="span1"></div>
+                    <span class="span1">票号:</span>
+                    <span id="lblticket" class="span3">0000007</span>
                     <br>
-                    <br>
-                    <span class="inTM">入场时间:
-                        <span id="entryTm" class="constpay02"></span>
-                        <span id="entryTm2" class="constpay03"></span>
+                    
+                    <span class="span1">总金额:</span>
+                    <span id="totalMon" class="span4">￥20.00</span>
+                    <br><br>
+                    <span class="inTM">
+                        优惠金额:<span id="lblStayTm" class="constpay02">￥100</span>
                     </span>
                     <br>
                     <br>
                     <span class="inTM">
-                        停留时间:<span id="lblStayTm" class="constpay02"></span>
+                        入场时间:
+                        <span id="entryTm" class="constpay04">2019-08-09</span>
+                        <span id="entryTm2" class="constpay03">12:20:20</span>
                     </span>
                     <br>
                     <br>
                     <span class="inTM">
-                        优惠金额:<span id="lblStayTm" class="constpay02"></span>
+                        停留时间:<span id="lblStayTm" class="constpay02">100天200小时30分钟</span>
                     </span>
                     <br>
-                    <br>
-
-                    <span style="font-size: 26px;font-weight:bolder;">总应收金额</span>
-                    <span id="totalMon" class="constpay">￥20.00</span>
-                    <!-- <br><br><br><br><br> -->
                 </div>
 
                 <div id="info" class="mui-row">
                     <div id="cash1" class="QR01">
                         <span>现金支付</span>
                     </div>
-                    <div id="qrcode1" class="QR01" style="display:none">
-                        <span>二维码支付</span>
-                        <div id="CountDown" style="display: inline;"></div>
-                    </div>
-
                     <div class="commoninfo">
                         <span>应付金额</span>
-                        <span id="shouldpay" class="constpay02">￥20.00</span>
+                        <span id="shouldpay" class="constpay05">￥20.00</span>
                         <br>
                         <span>已付金额</span>
-                        <span id="paymon" class="constpay02">￥20.00</span>
+                        <span id="paymon" class="constpay05">￥20.00</span>
                         <br>
                         <span>找零金额</span>
-                        <span id="oddchange" class="constpay02">￥0.00</span>
+                        <span id="oddchange" class="constpay05">￥0.00</span>
 
                     </div>
 
@@ -86,10 +80,9 @@
             </div>
             <!-- 中部右侧 -->
             <div class="mui-col-xs-6" style="height: 100%;">
-                <div id="qrcode" style="height:55%;text-align: center;padding-left: 10%;">
-                    <img src="./images/085拷贝.png" alt="未显示二维码" id="qrcode-logo" class="qrimg">
-                    <br>
-                    <span style="font-size: 23px;line-height: 30px;">扫码支付</span>
+                <span style="font-size: 32px;line-height: 40px;margin-left:45%;">扫码支付</span>
+                <img src="images/QR.png" alt="" id="qrcode-logo" style="display:none">
+                <div id="qrcode" style="height:60%;text-align: center;padding-left: 10%;">
                 </div>
 
 
@@ -97,11 +90,8 @@
             </div>
             <!-- <div class="mui-col-xs-1"></div> -->
         </div>
-
     </div>
 
-    </div>
-    </div>
 </body>
 
 </html>

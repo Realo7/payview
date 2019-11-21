@@ -23,10 +23,10 @@
     width: 60px;
     background-color: skyblue;
 }
-.btn1{
+.btn1 {
     height: 40px;
     width: 70px;
-    background: url(../images/plus_square_48px_1187922_easyicon.net.png);
+    background: url(../images/plus.png);
     background-size: 100% 100%;
     display: inline;
     border: none;
